@@ -2,11 +2,14 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <set>
 #include <limits>
 
 using std::cout;
 using std::cin;
 using std::endl;
+using std::string;
+using std::set;
 using std::vector;
 using std::numeric_limits;
 
@@ -41,8 +44,54 @@ int32_t < uint32_t - общий тип uint32_t (тк беззнаковый)
 
  добавив к значению - u = unsigned ( -1 (int) < 1u (uint))
 */
+enum class RequestType{ // тип запроса - перечислимый тип enum (enumeration)
+    ADD,
+    REMOVE,
+    NEGATE
+};
+
+/*void ProcessRequest( set<int>& numbers, RequestType request_type, int request_data) {
+
+    if (request_type == RequestType::ADD) {
+        numbers.insert(request_data);
+    } else if (request_type == RequestType::REMOVE) {
+        numbers.erase(request_data);
+    } else if (request_type == RequestType::NEGATE) {
+        if (numbers.count(request_data) == 1) {
+            numbers.erase(request_data);
+            numbers.insert(-request_data);
+        }
+    }
+}*/
+
+void ProscessRequest(set<int>& numbers, RequestType request_Type, int request_data){
+    switch (request_Type) {
+        case RequestType::ADD:
+            numbers.insert(request_data);
+            break;                          //выход из ветки
+        case RequestType::REMOVE:
+            numbers.erase(request_data);
+            break;
+        case RequestType::NEGATE:{          // добавлять скобки, если в ветке надо объявить переменную
+            bool contains = numbers.count(request_data) == 1;
+            if(contains){
+                numbers.erase(request_data);
+                numbers.insert(-request_data);
+            }
+        }
+        default:
+            cout << "unknown request" << endl;
+
+    }
+}
+
+
+
+
 
 int main(){
+
+
 
     vector<int> t = {-8, -7, -3};
     int sum = 0;
