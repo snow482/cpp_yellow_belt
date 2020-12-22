@@ -3,4 +3,4 @@ project(cpp_white_belt)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(cpp_white_belt "Types (week 1).cpp")
+add_executable(cpp_white_belt "Tuple(week 1).cpp")
