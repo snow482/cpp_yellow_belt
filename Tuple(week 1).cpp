@@ -47,6 +47,43 @@ private:
 
 */
 
+/*
+
+
+short value = 7;                // &value = 0012FF60
+short otherValue = 3;           // &otherValue = 0012FF54
+//
+//    *7   = &0012FF60
+short *ptr = &value;
+
+std::cout << &value << '\n';    // 0012FF60
+std::cout << value << '\n';     // 7
+std::cout << ptr << '\n';       // 0012FF60
+std::cout << *ptr << '\n';      // 7
+std::cout << '\n';
+
+*ptr = 9;
+
+std::cout << &value << '\n';    //
+std::cout << value << '\n';     //
+std::cout << ptr << '\n';       //
+std::cout << *ptr  << '\n';     //
+std::cout << '\n';
+
+ptr = &otherValue;
+
+std::cout << &otherValue << '\n'; //
+std::cout << otherValue << '\n';  //
+std::cout << ptr << '\n';         //
+std::cout << *ptr << '\n';        //
+std::cout << '\n';
+
+std::cout << sizeof(ptr) << '\n';
+std::cout << sizeof(*ptr) << '\n';
+*/
+
+
+
 
 
 
@@ -57,9 +94,13 @@ int main(){
     int* tmp = (int*) &x[3];
     std::cout << *tmp << " ";*/
 
-    int a = 3524;
+    int x;
+    ++x = 5;
+    cout << x << endl;
 
-    int *ptr = &a;
+    short a = 3524;
+
+    short *ptr = &a;
 
 
     cout << "a:" << a << " " << &a << " " << sizeof(a) << endl;
@@ -73,17 +114,17 @@ int main(){
 
 
    /* tuple<int, string, bool> t (5, "tuple", true);     // кортеж с заполненным конструктором поумолчанию
-    tuple t_new (5, "tuple", true);                    // с С++17 можно не указывать типы в <>, язык сам поймет
+    tuple t_new (5, "tuple", true);                      // с С++17 можно не указывать типы в <>, язык сам поймет
 
-    auto tt = make_tuple(7, "tupppppple", false);      // создание кортежа через make_tuple
+    auto tt = make_tuple(7, "tupppppple", false);        // создание кортежа через make_tuple
     // tuple<int, string, bool> tt == auto tt
-    cout << get<1>(tt) << " ";                      // получить <первый> элемент кортежа tt - обращение
+    cout << get<1>(tt) << " ";                           // получить <первый> элемент кортежа tt - обращение
 
-    pair<int, string> p (7, "pair");        // создание пары (частный случай tuple)
-    pair pp (7, "string");                  // c C++17, не указываем тип в <>
+    pair<int, string> p (7, "pair");                    // создание пары (частный случай tuple)
+    pair pp (7, "string");                              // c C++17, не указываем тип в <>
 
-    auto ppp = make_pair(7, "C++");         // создание пары через make_pair
-    cout << p.first << " " << p.second << " ";         // вывод значений пары
+    auto ppp = make_pair(7, "C++");                     // создание пары через make_pair
+    cout << p.first << " " << p.second << " ";          // вывод значений пары
 
 
 
